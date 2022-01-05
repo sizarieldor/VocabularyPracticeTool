@@ -1,3 +1,4 @@
+/*
 package GUIElements;
 
 import Constants.ConstColors;
@@ -85,3 +86,4 @@ public class ButtonPanel extends JPanel implements ActionListener {
         }
     }
 }
+*/

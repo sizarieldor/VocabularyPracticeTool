@@ -4,6 +4,11 @@ import GUIElements.*;
 
 import javax.swing.*;
 
+import java.io.File;
+
+import ReaderAndWriter.DatabaseReader;
+import ReaderAndWriter.DatabaseWriter;
+
 public class Main {
 
     //function to input new words NL and EN -- record NL, EN, date of input, ?topic
@@ -16,32 +21,37 @@ public class Main {
     //[how does java keep track of dates]
     //init file with adjustments for backup frequency - max # of backups, duration of backup period
     //readme html with illustrations
-    //gamify the word/sentence answering?
+    //gamify the word/sentence answering? win streak?
     //OCR support for text?
 
-    public static JFrame mainFrame = new MainFrame();
-//    public static JLabel mainLabel = new MainLabel();
-    public static JPanel buttonPanel = new ButtonPanel();
+    //initialize major components
+    public static JFrame mainFrame = new FrameMain();
+    //    public static JLabel mainLabel = new MainLabel();
+//    public static JPanel buttonPanel = new ButtonPanel();
     public static JPanel panelWordPractice = new PanelWordPractice();
     public static JPanel panelWordInput = new PanelWordInput();
     public static JPanel panelSentencePractice = new PanelSentencePractice();
     public static JPanel panelSentenceInput = new PanelSentenceInput();
+    public static File wordsDatabaseFile = new File("words_database.txt"); //TODO somehow connect to .ini file
+    public static DatabaseReader databaseReader = new DatabaseReader(wordsDatabaseFile);
+    public static DatabaseWriter databaseWriter = new DatabaseWriter();
+
 
     public static void main(String[] args) {
-        //buttons: 2 - add new word; 1 - practice words; 4 - add new sentence; 3 - practice sentences
-        //TODO: menubar for advanced stuff
+        //TODO load a bunch of things from the .ini file
+        databaseWriter.createWordDatabase(); //this will probably be empty
 
-        mainFrame.setVisible(true);
+//        mainFrame.setLayout(new FlowLayout());
         mainFrame.setLayout(null);
 
-        //add panels
-        mainFrame.add(buttonPanel);
-        mainFrame.add(panelWordPractice);
-        mainFrame.add(panelWordInput);
-        mainFrame.add(panelSentencePractice);
-        mainFrame.add(panelSentenceInput);
+        JMenuBar menuBar = new MenuBarMain();
+        mainFrame.setJMenuBar(menuBar);
+        menuBar.setVisible(true);
 
+        JTabbedPane tabbedPane = new BaseTabbedPane();
+        mainFrame.add(tabbedPane);
+        tabbedPane.setBounds(0, 0, 900, 700);
 
-
+        mainFrame.setVisible(true);
     }
 }
