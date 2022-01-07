@@ -150,13 +150,13 @@ public class PanelWordPractice extends BasePanel {
             BufferedImage imageENtoNLSun = ImageIO.read(new File("src\\sun.bmp"));
             labelENToNLSun = new JLabel(new ImageIcon(imageENtoNLSun));
             this.add(labelENToNLSun);
-            labelENToNLSun.setBounds(700,100,150,150);
+            labelENToNLSun.setBounds(700,350,150,150);
             labelENToNLSun.setVisible(false);
 
             BufferedImage imageENtoNLCloud = ImageIO.read(new File("src\\cloud.bmp"));
             labelENToNLCloud = new JLabel(new ImageIcon(imageENtoNLCloud));
             this.add(labelENToNLCloud);
-            labelENToNLCloud.setBounds(700,100,150,150);
+            labelENToNLCloud.setBounds(700,350,150,150);
             labelENToNLCloud.setVisible(false);
 
         } catch (IOException e) {
